@@ -8,6 +8,7 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
+  const [savedBooks, setSavedBooks] = useState([]);
 
   const handleSearch = (search) => {
     fetch(`https://openlibrary.org/search.json?q=${search}&limit=20`)
@@ -48,10 +49,25 @@ function App() {
       .then(() => navigate("/"));
   };
 
+  const toggleSaveBook = (book) => {
+    savedBooks.includes(book)
+      ? setSavedBooks(savedBooks.filter((item) => item !== book))
+      : setSavedBooks([...savedBooks, book]);
+  };
+
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet context={{ searchResults, addToForm, selectedBook, addEntry }} />
+      <Outlet
+        context={{
+          searchResults,
+          addToForm,
+          selectedBook,
+          addEntry,
+          toggleSaveBook,
+          savedBooks,
+        }}
+      />
     </div>
   );
 }

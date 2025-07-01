@@ -1,14 +1,19 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-import SearchResult from "../components/SearchResult";
+import BookCard from "../components/BookCard";
 
 const SearchResults = () => {
-  const { searchResults, addToForm } = useOutletContext();
+  const { searchResults, addToForm, savedBooks } = useOutletContext();
 
   return (
     <div>
       {searchResults.map((book) => (
-        <SearchResult key={book.id} book={book} handleClick={addToForm} />
+        <BookCard
+          key={book.id}
+          book={book}
+          handleClick={addToForm}
+          savedBooks={savedBooks}
+        />
       ))}
     </div>
   );
