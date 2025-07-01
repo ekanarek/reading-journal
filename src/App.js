@@ -35,10 +35,14 @@ function App() {
     navigate("/new");
   };
 
+  const addEntry = (newEntry) => {
+    console.log(newEntry);
+  };
+
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet context={{ searchResults, addToForm, selectedBook }} />
+      <Outlet context={{ searchResults, addToForm, selectedBook, addEntry }} />
     </div>
   );
 }
