@@ -35,10 +35,23 @@ function App() {
     navigate("/new");
   };
 
+  const addEntry = (newEntry) => {
+    fetch("http://localhost:3001/journal", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newEntry),
+    })
+      .then((r) => r.json())
+      .then(() => navigate("/"));
+  };
+
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet context={{ searchResults, addToForm, selectedBook }} />
+      <Outlet context={{ searchResults, addToForm, selectedBook, addEntry }} />
     </div>
   );
 }
