@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
 const savedAPI = "http://localhost:3001/saved/";
+const journalAPI = "http://localhost:3001/journal/";
 
 function App() {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ function App() {
   };
 
   const addEntry = (newEntry) => {
-    fetch("http://localhost:3001/journal", {
+    fetch(journalAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
