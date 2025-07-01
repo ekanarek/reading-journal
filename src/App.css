@@ -15,3 +15,7 @@
 .journalCard img {
   max-height: 200px;
 }
+
+#journalIcon {
+  max-width: 100px;
+}
