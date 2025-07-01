@@ -9,6 +9,7 @@ const SearchBar = ({ handleSearch }) => {
     e.preventDefault();
     handleSearch(search);
     navigate("/search");
+    setSearch("");
   };
 
   return (
