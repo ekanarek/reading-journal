@@ -14,6 +14,7 @@ function App() {
           if (OLID && book.title && book.author_name) {
             const bookCover = `https://covers.openlibrary.org/b/olid/${OLID}-M.jpg`;
             const bookObj = {
+              id: OLID,
               title: book.title,
               author: book.author_name[0],
               image: bookCover,
@@ -28,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet />
+      <Outlet context={searchResults} />
     </div>
   );
 }
