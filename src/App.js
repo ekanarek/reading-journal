@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
 function App() {
+  const navigate = useNavigate();
+
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedBook, setSelectedBook] = useState({});
+
   const handleSearch = (search) => {
     fetch(`https://openlibrary.org/search.json?q=${search}&limit=20`)
       .then((r) => r.json())
@@ -26,10 +30,15 @@ function App() {
       });
   };
 
+  const addToForm = (book) => {
+    setSelectedBook(book);
+    navigate("/new");
+  };
+
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet context={searchResults} />
+      <Outlet context={{ searchResults, addToForm, selectedBook }} />
     </div>
   );
 }

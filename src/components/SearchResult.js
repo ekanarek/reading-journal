@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchResult = ({ book }) => {
+const SearchResult = ({ book, handleClick }) => {
   const { title, author, image } = book;
 
   return (
@@ -8,7 +8,7 @@ const SearchResult = ({ book }) => {
       <img src={image} alt={title} />
       <p>{title}</p>
       <p>By {author}</p>
-      <button>Add to Journal</button>
+      <button onClick={() => handleClick(book)}>Add to Journal</button>
     </div>
   );
 };
