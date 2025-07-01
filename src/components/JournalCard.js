@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-const JournalCard = ({ entry }) => {
+const JournalCard = ({ entry, handleDelete }) => {
   const { title, author, image, started, finished, rating, notes } = entry;
   const [isClicked, setIsClicked] = useState(false);
 
   return (
     <div className="journalCard" onClick={() => setIsClicked(!isClicked)}>
-      <button className="deleteButton">X</button>
+      <button className="deleteButton" onClick={() => handleDelete(entry)}>
+        X
+      </button>
       {isClicked ? (
         <p>{notes}</p>
       ) : (

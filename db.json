@@ -1,26 +1,6 @@
 {
   "journal": [
     {
-      "id": "1",
-      "title": "The Lord of the Rings",
-      "author": "J.R.R. Tolkien",
-      "image": "https://covers.openlibrary.org/b/olid/OL51694024M-L.jpg",
-      "started": "06-01-2025",
-      "finished": "06-30-2025",
-      "rating": 5,
-      "notes": "Lorem ipsum dolor sit amet, ne dico dolores prodesset quo, eam liber abhorreant ei. Ei est alia repudiandae, vix alterum contentiones at. Et saperet utroque debitis eam, vix no mutat molestiae voluptatibus, vix dolores antiopam ne. Pro at elitr constituto. Pro lucilius detraxit molestiae an, timeam vocibus verterem est te. Modus prompta inimicus ius ne. Cu ius errem fabellas recusabo, mucius oportere ius et. His ad sale consequuntur. Te case imperdiet eum. Cu qui esse copiosae consequuntur, laboramus cotidieque nam cu. Mei in verear disputationi, possim everti has ei."
-    },
-    {
-      "id": "2",
-      "title": "Jade City",
-      "author": "Fonda Lee",
-      "image": "https://covers.openlibrary.org/b/olid/OL29584565M-L.jpg",
-      "started": "05-20-2025",
-      "finished": "05-25-2025",
-      "rating": 4,
-      "notes": "Lorem ipsum dolor sit amet, ne dico dolores prodesset quo, eam liber abhorreant ei. Ei est alia repudiandae, vix alterum contentiones at. Et saperet utroque debitis eam, vix no mutat molestiae voluptatibus, vix dolores antiopam ne."
-    },
-    {
       "id": "a4b3",
       "title": "Uprooted",
       "author": "Naomi Novik",
