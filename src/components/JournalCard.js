@@ -6,6 +6,7 @@ const JournalCard = ({ entry }) => {
 
   return (
     <div className="journalCard" onClick={() => setIsClicked(!isClicked)}>
+      <button className="deleteButton">X</button>
       {isClicked ? (
         <p>{notes}</p>
       ) : (
