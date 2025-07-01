@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
+
+const savedAPI = "http://localhost:3001/saved/";
+const journalAPI = "http://localhost:3001/journal/";
 
 function App() {
   const navigate = useNavigate();
 
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
+  const [savedBooks, setSavedBooks] = useState([]);
+
+  useEffect(() => {
+    fetch(savedAPI)
+      .then((r) => r.json())
+      .then((data) => setSavedBooks(data));
+  }, []);
 
   const handleSearch = (search) => {
     fetch(`https://openlibrary.org/search.json?q=${search}&limit=20`)
@@ -36,7 +46,7 @@ function App() {
   };
 
   const addEntry = (newEntry) => {
-    fetch("http://localhost:3001/journal", {
+    fetch(journalAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,10 +58,44 @@ function App() {
       .then(() => navigate("/"));
   };
 
+  const toggleSaveBook = (book) => {
+    const alreadySaved = savedBooks.some((item) => item.id === book.id);
+
+    alreadySaved
+      ? fetch(savedAPI + book.id, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((r) => r.json())
+          .then(setSavedBooks(savedBooks.filter((item) => item.id !== book.id)))
+      : fetch(savedAPI, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(book),
+        })
+          .then((r) => r.json())
+          .then((savedBook) => setSavedBooks([...savedBooks, savedBook]));
+  };
+
   return (
     <div className="App">
       <NavBar handleSearch={handleSearch} />
-      <Outlet context={{ searchResults, addToForm, selectedBook, addEntry }} />
+      <Outlet
+        context={{
+          searchResults,
+          addToForm,
+          selectedBook,
+          addEntry,
+          toggleSaveBook,
+          savedBooks,
+        }}
+      />
     </div>
   );
 }

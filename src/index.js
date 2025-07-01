@@ -6,6 +6,7 @@ import App from "./App";
 import AddForm from "./pages/AddForm";
 import Journal from "./pages/Journal";
 import SearchResults from "./pages/SearchResults";
+import SavedBooks from "./pages/SavedBooks";
 
 const routes = [
   {
@@ -23,6 +24,10 @@ const routes = [
       {
         path: "/new",
         element: <AddForm />,
+      },
+      {
+        path: "/saved",
+        element: <SavedBooks />,
       },
     ],
   },

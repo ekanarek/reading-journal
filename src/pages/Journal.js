@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import JournalCard from "../components/JournalCard";
 
-const Journal = () => {
-  const journalAPI = "http://localhost:3001/journal/";
+const journalAPI = "http://localhost:3001/journal/";
 
+const Journal = () => {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
