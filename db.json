@@ -37,6 +37,18 @@
       "title": "Hungerstone",
       "author": "Kat Dunn",
       "image": "https://covers.openlibrary.org/b/olid/OL59380379M-M.jpg"
+    },
+    {
+      "id": "OL25662116M",
+      "title": "Harry Potter and the Order of the Phoenix",
+      "author": "J. K. Rowling",
+      "image": "https://covers.openlibrary.org/b/olid/OL25662116M-M.jpg"
+    },
+    {
+      "id": "OL55900058M",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "image": "https://covers.openlibrary.org/b/olid/OL55900058M-M.jpg"
     }
   ]
 }

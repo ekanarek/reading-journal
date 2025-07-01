@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
@@ -9,6 +9,12 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
   const [savedBooks, setSavedBooks] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/saved")
+      .then((r) => r.json())
+      .then((data) => setSavedBooks(data));
+  }, []);
 
   const handleSearch = (search) => {
     fetch(`https://openlibrary.org/search.json?q=${search}&limit=20`)

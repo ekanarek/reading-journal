@@ -2,7 +2,10 @@ import React, { useState } from "react";
 
 const BookCard = ({ book, addToForm, savedBooks, toggleSaveBook }) => {
   const { title, author, image } = book;
-  const [isSaved, setIsSaved] = useState(savedBooks.includes(book));
+  // const [isSaved, setIsSaved] = useState(
+  //   savedBooks.some((savedBook) => book.id === savedBook.id)
+  // );
+  const isSaved = savedBooks.some((savedBook) => savedBook.id === book.id);
 
   return (
     <div>
@@ -12,7 +15,13 @@ const BookCard = ({ book, addToForm, savedBooks, toggleSaveBook }) => {
       <button onClick={() => toggleSaveBook(book)}>
         {isSaved ? "♥︎" : "♡"}
       </button>
-      <button onClick={() => addToForm(book)}>Add to Journal</button>
+      <button
+        onClick={() => {
+          addToForm(book);
+        }}
+      >
+        Add to Journal
+      </button>
     </div>
   );
 };
