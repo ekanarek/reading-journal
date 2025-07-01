@@ -1,26 +1,12 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import journalIcon from "../icon.png";
+import NavLinks from "./NavLinks";
+import SearchBar from "./SearchBar";
 
-const NavBar = () => {
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/search");
-  };
-
+const NavBar = ({ handleSearch }) => {
   return (
     <header>
-      <nav>
-        <NavLink to="/">
-          <img src={journalIcon} id="journalIcon" />
-        </NavLink>
-      </nav>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search for a book..." />
-        <button type="submit">Search</button>
-      </form>
+      <NavLinks />
+      <SearchBar handleSearch={handleSearch} />
     </header>
   );
 };
