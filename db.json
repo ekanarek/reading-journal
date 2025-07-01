@@ -30,5 +30,13 @@
       "rating": "5",
       "notes": "notes!!!"
     }
+  ],
+  "saved": [
+    {
+      "id": "OL59380379M",
+      "title": "Hungerstone",
+      "author": "Kat Dunn",
+      "image": "https://covers.openlibrary.org/b/olid/OL59380379M-M.jpg"
+    }
   ]
 }

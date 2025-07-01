@@ -52,7 +52,16 @@ function App() {
   const toggleSaveBook = (book) => {
     savedBooks.includes(book)
       ? setSavedBooks(savedBooks.filter((item) => item !== book))
-      : setSavedBooks([...savedBooks, book]);
+      : fetch("http://localhost:3001/saved", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(book),
+        })
+          .then((r) => r.json())
+          .then((savedBook) => setSavedBooks([...savedBooks, savedBook]));
   };
 
   return (
