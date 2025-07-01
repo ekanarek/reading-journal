@@ -2,9 +2,6 @@ import React, { useState } from "react";
 
 const BookCard = ({ book, addToForm, savedBooks, toggleSaveBook }) => {
   const { title, author, image } = book;
-  // const [isSaved, setIsSaved] = useState(
-  //   savedBooks.some((savedBook) => book.id === savedBook.id)
-  // );
   const isSaved = savedBooks.some((savedBook) => savedBook.id === book.id);
 
   return (

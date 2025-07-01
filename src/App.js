@@ -3,6 +3,8 @@ import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
+const savedAPI = "http://localhost:3001/saved/";
+
 function App() {
   const navigate = useNavigate();
 
@@ -11,7 +13,7 @@ function App() {
   const [savedBooks, setSavedBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/saved")
+    fetch(savedAPI)
       .then((r) => r.json())
       .then((data) => setSavedBooks(data));
   }, []);
@@ -56,9 +58,19 @@ function App() {
   };
 
   const toggleSaveBook = (book) => {
-    savedBooks.includes(book)
-      ? setSavedBooks(savedBooks.filter((item) => item !== book))
-      : fetch("http://localhost:3001/saved", {
+    const alreadySaved = savedBooks.some((item) => item.id === book.id);
+
+    alreadySaved
+      ? fetch(savedAPI + book.id, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((r) => r.json())
+          .then(setSavedBooks(savedBooks.filter((item) => item.id !== book.id)))
+      : fetch(savedAPI, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
