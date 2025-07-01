@@ -36,7 +36,16 @@ function App() {
   };
 
   const addEntry = (newEntry) => {
-    console.log(newEntry);
+    fetch("http://localhost:3001/journal", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newEntry),
+    })
+      .then((r) => r.json())
+      .then(() => navigate("/"));
   };
 
   return (
