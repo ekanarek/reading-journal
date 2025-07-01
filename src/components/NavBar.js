@@ -2,11 +2,11 @@ import React from "react";
 import NavLinks from "./NavLinks";
 import SearchBar from "./SearchBar";
 
-const NavBar = () => {
+const NavBar = ({ handleSearch }) => {
   return (
     <header>
       <NavLinks />
-      <SearchBar />
+      <SearchBar handleSearch={handleSearch} />
     </header>
   );
 };
