@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import JournalCard from "../components/JournalCard";
-import { sortByTitle } from "../utils/sort";
+import { sortByDate, sortByTitle } from "../utils/sort";
 import "../styles/Journal.css";
 
 const journalAPI = "http://localhost:3001/journal/";
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
-  const [sortedBy, setSortedBy] = useState("finished");
+  const [sortedBy, setSortedBy] = useState("finished-desc");
 
   useEffect(() => {
     fetch(journalAPI)
@@ -17,10 +17,14 @@ const Journal = () => {
 
   const sortedEntries = () => {
     switch (sortedBy) {
-      case "finished":
-        return entries;
-      case "started":
-        return entries;
+      case "finished-desc":
+        return sortByDate(entries, "finished", "descending");
+      case "finished-asc":
+        return sortByDate(entries, "finished", "ascending");
+      case "started-desc":
+        return sortByDate(entries, "started", "descending");
+      case "started-asc":
+        return sortByDate(entries, "started", "ascending");
       case "title":
         return sortByTitle(entries);
       default:
@@ -50,8 +54,10 @@ const Journal = () => {
     <div>
       <label>Sort by: </label>
       <select onChange={(e) => setSortedBy(e.target.value)}>
-        <option value="finished">Date Finished</option>
-        <option value="started">Date Started</option>
+        <option value="finished-desc">Date Finished (Descending)</option>
+        <option value="finished-asc">Date Finished (Ascending)</option>
+        <option value="started-desc">Date Started (Descending)</option>
+        <option value="started-asc">Date Started (Ascending)</option>
         <option value="title">Title</option>
       </select>
       <div className="journalGrid">
