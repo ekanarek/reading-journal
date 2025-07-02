@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 import App from "./App";
 import AddForm from "./pages/AddForm";
 import Journal from "./pages/Journal";
 import SearchResults from "./pages/SearchResults";
 import SavedBooks from "./pages/SavedBooks";
+import "./index.css";
 
 const routes = [
   {

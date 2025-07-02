@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import "./App.css";
 
 const savedAPI = "http://localhost:3001/saved/";
 const journalAPI = "http://localhost:3001/journal/";
