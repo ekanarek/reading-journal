@@ -15,6 +15,9 @@ const BookCard = ({ book, addToForm, savedBooks, toggleSaveBook }) => {
       <button
         onClick={() => {
           addToForm(book);
+          if (isSaved) {
+            toggleSaveBook(book);
+          }
         }}
       >
         Add to Journal
