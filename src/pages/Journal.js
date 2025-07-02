@@ -12,7 +12,7 @@ const Journal = () => {
       .then((data) => setEntries(data));
   }, []);
 
-  const deleteEntry = (entry) => {
+  const handleDelete = (entry) => {
     if (
       window.confirm(
         "Are you sure you would like to delete? This cannot be undone."
@@ -33,7 +33,7 @@ const Journal = () => {
   return (
     <div className="journal">
       {entries.map((entry) => (
-        <JournalCard key={entry.id} entry={entry} handleDelete={deleteEntry} />
+        <JournalCard key={entry.id} entry={entry} handleDelete={handleDelete} />
       ))}
     </div>
   );

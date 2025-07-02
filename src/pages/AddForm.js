@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 const AddForm = () => {
-  const { selectedBook, addEntry } = useOutletContext();
+  const { selectedBook, handleAddEntry } = useOutletContext();
 
   const [image, setImage] = useState(selectedBook.image);
   const [startDate, setStartDate] = useState("");
@@ -21,7 +21,7 @@ const AddForm = () => {
       rating: rating,
       notes: notes,
     };
-    addEntry(newEntry);
+    handleAddEntry(newEntry);
   };
 
   return (

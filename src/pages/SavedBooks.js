@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import BookCard from "../components/BookCard";
 
 const SavedBooks = () => {
-  const { savedBooks, addToForm, toggleSaveBook } = useOutletContext();
+  const { savedBooks, handleAddToForm, handleSaveBook } = useOutletContext();
 
   return (
     <div>
@@ -11,9 +11,9 @@ const SavedBooks = () => {
         <BookCard
           key={book.id}
           book={book}
-          addToForm={addToForm}
+          addToForm={handleAddToForm}
           savedBooks={savedBooks}
-          toggleSaveBook={toggleSaveBook}
+          toggleSaveBook={handleSaveBook}
         />
       ))}
     </div>
