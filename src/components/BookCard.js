@@ -5,13 +5,6 @@ const BookCard = ({ book, handleAddToForm, savedBooks, handleSaveBook }) => {
   const { title, author, image } = book;
   const isSaved = savedBooks.some((savedBook) => savedBook.id === book.id);
 
-  const handleAddToJournal = () => {
-    handleAddToForm(book);
-    if (isSaved) {
-      handleSaveBook(book);
-    }
-  };
-
   return (
     <div className="bookCard">
       <img src={image} alt={title} />
@@ -23,7 +16,7 @@ const BookCard = ({ book, handleAddToForm, savedBooks, handleSaveBook }) => {
         <button className="saveButton" onClick={() => handleSaveBook(book)}>
           {isSaved ? "♥︎" : "♡"}
         </button>
-        <button className="addButton" onClick={handleAddToJournal}>
+        <button className="addButton" onClick={() => handleAddToForm(book)}>
           Add to Journal
         </button>
       </div>

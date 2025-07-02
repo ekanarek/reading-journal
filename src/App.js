@@ -56,6 +56,13 @@ function App() {
     })
       .then((r) => r.json())
       .then(() => {
+        const savedMatch = savedBooks.find(
+          (book) => book.id === selectedBook.id
+        );
+
+        if (savedMatch) {
+          handleSaveBook(savedMatch);
+        }
         navigate("/");
         setSelectedBook({});
       });
