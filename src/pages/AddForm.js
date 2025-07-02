@@ -5,7 +5,15 @@ import "../styles/AddForm.css";
 const AddForm = () => {
   const { selectedBook, handleAddEntry } = useOutletContext();
 
-  const [image, setImage] = useState(selectedBook.image);
+  const [title, setTitle] = useState(
+    selectedBook.title ? selectedBook.title : ""
+  );
+  const [author, setAuthor] = useState(
+    selectedBook.author ? selectedBook.author : ""
+  );
+  const [image, setImage] = useState(
+    selectedBook.image ? selectedBook.image : ""
+  );
   const [startDate, setStartDate] = useState("");
   const [finishedDate, setFinishedDate] = useState("");
   const [rating, setRating] = useState("");
@@ -14,8 +22,8 @@ const AddForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEntry = {
-      title: selectedBook.title,
-      author: selectedBook.author,
+      title: title,
+      author: author,
       image: image,
       started: startDate,
       finished: finishedDate,
@@ -31,21 +39,27 @@ const AddForm = () => {
         <h3>Add A New Journal Entry</h3>
         <div className="formRow">
           <label>Title: </label>
-          <input
-            type="text"
-            value={selectedBook.title}
-            readOnly="readOnly"
-            disabled
-          />
+          {selectedBook.title ? (
+            <input type="text" value={title} readOnly="readOnly" disabled />
+          ) : (
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          )}
         </div>
         <div className="formRow">
           <label>Author: </label>
-          <input
-            type="text"
-            value={selectedBook.author}
-            readOnly="readOnly"
-            disabled
-          />
+          {selectedBook.author ? (
+            <input type="text" value={author} readOnly="readOnly" disabled />
+          ) : (
+            <input
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+          )}
         </div>
         <div className="formRow">
           <label>Cover Image URL: </label>
