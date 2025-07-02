@@ -6,7 +6,7 @@ import "./App.css";
 const savedAPI = "http://localhost:3001/saved/";
 const journalAPI = "http://localhost:3001/journal/";
 
-function App() {
+const App = () => {
   const navigate = useNavigate();
 
   const [searchResults, setSearchResults] = useState([]);
@@ -108,6 +108,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
