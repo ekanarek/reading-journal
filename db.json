@@ -119,6 +119,16 @@
       "finished": "2025-03-26",
       "rating": "3",
       "notes": "Lorem ipsum dolor sit amet, ne dico dolores prodesset quo, eam liber abhorreant ei. Ei est alia repudiandae, vix alterum contentiones at. Et saperet utroque debitis eam, vix no mutat molestiae voluptatibus, vix dolores antiopam ne. Pro at elitr constituto. Pro lucilius detraxit molestiae an, timeam vocibus verterem est te. Modus prompta inimicus ius ne. Cu ius errem fabellas recusabo, mucius oportere ius et. His ad sale consequuntur. Te case imperdiet eum. Cu qui esse copiosae consequuntur, laboramus cotidieque nam cu. Mei in verear disputationi, possim everti has ei."
+    },
+    {
+      "id": "5a23",
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "image": "https://covers.openlibrary.org/b/olid/OL51694024M-M.jpg",
+      "started": "2025-01-02",
+      "finished": "2025-01-03",
+      "rating": "5",
+      "notes": "legolas and gimli should kiss!!!"
     }
   ],
   "saved": [
@@ -337,6 +347,18 @@
       "title": "The Bone Ships",
       "author": "RJ Barker",
       "image": "https://covers.openlibrary.org/b/olid/OL28199727M-M.jpg"
+    },
+    {
+      "id": "OL51694024M",
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "image": "https://covers.openlibrary.org/b/olid/OL51694024M-M.jpg"
+    },
+    {
+      "id": "OL26855753M",
+      "title": "Circe",
+      "author": "Madeline Miller",
+      "image": "https://covers.openlibrary.org/b/olid/OL26855753M-M.jpg"
     }
   ]
 }

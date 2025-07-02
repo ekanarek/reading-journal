@@ -12,9 +12,9 @@ const SavedBooks = () => {
         <BookCard
           key={book.id}
           book={book}
-          addToForm={handleAddToForm}
+          handleAddToForm={handleAddToForm}
           savedBooks={savedBooks}
-          toggleSaveBook={handleSaveBook}
+          handleSaveBook={handleSaveBook}
         />
       ))}
     </div>
