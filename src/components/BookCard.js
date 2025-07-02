@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/BookCard.css";
 
 const BookCard = ({ book, handleAddToForm, savedBooks, handleSaveBook }) => {
   const { title, author, image } = book;
@@ -12,14 +13,20 @@ const BookCard = ({ book, handleAddToForm, savedBooks, handleSaveBook }) => {
   };
 
   return (
-    <div>
+    <div className="bookCard">
       <img src={image} alt={title} />
-      <p>{title}</p>
+      <p>
+        <strong>{title}</strong>
+      </p>
       <p>By {author}</p>
-      <button onClick={() => handleSaveBook(book)}>
-        {isSaved ? "♥︎" : "♡"}
-      </button>
-      <button onClick={handleAddToJournal}>Add to Journal</button>
+      <div className="bookCardButtons">
+        <button className="saveButton" onClick={() => handleSaveBook(book)}>
+          {isSaved ? "♥︎" : "♡"}
+        </button>
+        <button className="addButton" onClick={handleAddToJournal}>
+          Add to Journal
+        </button>
+      </div>
     </div>
   );
 };
