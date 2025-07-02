@@ -55,7 +55,10 @@ function App() {
       body: JSON.stringify(newEntry),
     })
       .then((r) => r.json())
-      .then(() => navigate("/"));
+      .then(() => {
+        navigate("/");
+        setSelectedBook({});
+      });
   };
 
   const handleSaveBook = (book) => {
@@ -85,7 +88,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar handleSearch={handleSearch} />
+      <NavBar handleSearch={handleSearch} setSelectedBook={setSelectedBook} />
       <Outlet
         context={{
           searchResults,
