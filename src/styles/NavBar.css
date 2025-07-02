@@ -1,3 +1,27 @@
 header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--yellow);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+nav a.active {
+  color: var(--coral);
 }

@@ -1,0 +1,16 @@
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon {
+  height: 40px;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.nav-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin: 0;
+}
