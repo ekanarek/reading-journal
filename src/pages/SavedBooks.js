@@ -1,19 +1,20 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import BookCard from "../components/BookCard";
+import "../styles/SavedBooks.css";
 
 const SavedBooks = () => {
-  const { savedBooks, addToForm, toggleSaveBook } = useOutletContext();
+  const { savedBooks, handleAddToForm, handleSaveBook } = useOutletContext();
 
   return (
-    <div>
+    <div className="savedBooksGrid">
       {savedBooks.map((book) => (
         <BookCard
           key={book.id}
           book={book}
-          addToForm={addToForm}
+          handleAddToForm={handleAddToForm}
           savedBooks={savedBooks}
-          toggleSaveBook={toggleSaveBook}
+          handleSaveBook={handleSaveBook}
         />
       ))}
     </div>

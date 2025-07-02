@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/JournalCard.css";
 
 const JournalCard = ({ entry, handleDelete }) => {
   const { title, author, image, started, finished, rating, notes } = entry;
@@ -6,24 +7,42 @@ const JournalCard = ({ entry, handleDelete }) => {
 
   return (
     <div className="journalCard" onClick={() => setIsClicked(!isClicked)}>
-      <button className="deleteButton" onClick={() => handleDelete(entry)}>
+      <button
+        className="deleteButton"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDelete(entry);
+        }}
+      >
         X
       </button>
-      {isClicked ? (
-        <p>{notes}</p>
-      ) : (
-        <>
-          <img alt={title} src={image} />
-          <div>
-            <p>Title: {title}</p>
-            <p>Author: {author}</p>
-            <p>Date Started: {started}</p>
-            <p>Date Finished: {finished}</p>
-            <p>Rating: {rating}/5</p>
-            <p>Click to see more</p>
-          </div>
-        </>
-      )}
+      <img alt={title} src={image} />
+      <div className="journalDetails">
+        {isClicked ? (
+          <p>{notes}</p>
+        ) : (
+          <>
+            <p>
+              <strong>Title:</strong> {title}
+            </p>
+            <p>
+              <strong>Author:</strong> {author}
+            </p>
+            <p>
+              <strong>Date Started:</strong> {started}
+            </p>
+            <p>
+              <strong>Date Finished:</strong> {finished}
+            </p>
+            <p>
+              <strong>Rating:</strong> {rating}/5
+            </p>
+          </>
+        )}
+      </div>
+      <div className="clickForMore">
+        Click to see {isClicked ? "book details" : "notes"}
+      </div>
     </div>
   );
 };

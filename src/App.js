@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import "./App.css";
 
 const savedAPI = "http://localhost:3001/saved/";
 const journalAPI = "http://localhost:3001/journal/";
@@ -40,12 +40,12 @@ function App() {
       });
   };
 
-  const addToForm = (book) => {
+  const handleAddToForm = (book) => {
     setSelectedBook(book);
     navigate("/new");
   };
 
-  const addEntry = (newEntry) => {
+  const handleAddEntry = (newEntry) => {
     fetch(journalAPI, {
       method: "POST",
       headers: {
@@ -58,7 +58,7 @@ function App() {
       .then(() => navigate("/"));
   };
 
-  const toggleSaveBook = (book) => {
+  const handleSaveBook = (book) => {
     const alreadySaved = savedBooks.some((item) => item.id === book.id);
 
     alreadySaved
@@ -89,10 +89,10 @@ function App() {
       <Outlet
         context={{
           searchResults,
-          addToForm,
+          handleAddToForm,
           selectedBook,
-          addEntry,
-          toggleSaveBook,
+          handleAddEntry,
+          handleSaveBook,
           savedBooks,
         }}
       />

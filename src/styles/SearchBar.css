@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  gap: 0.3rem;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+button[type="submit"] {
+  background-color: var(--mint);
+  border: 2px solid black;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--yellow);
+}
+
+button[type="submit"]:active {
+  background-color: var(--coral);
+}

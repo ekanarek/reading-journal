@@ -1,29 +1,4 @@
 .App {
   text-align: center;
-}
-
-.journalCard {
-  max-width: 250px;
-  min-height: 420px;
-  max-height: 420px;
-  border: 1px black solid;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.journalCard img {
-  max-height: 200px;
-}
-
-#journalIcon {
-  max-width: 100px;
-}
-
-.deleteButton {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  cursor: pointer;
+  min-height: 100vh;
 }
