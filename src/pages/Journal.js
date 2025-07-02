@@ -12,7 +12,7 @@ const journalAPI = "http://localhost:3001/journal/";
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
-  const [sortedBy, setSortedBy] = useState("finished-desc");
+  const [sortedBy, setSortedBy] = useState("finished");
 
   useEffect(() => {
     fetch(journalAPI)
@@ -59,15 +59,21 @@ const Journal = () => {
 
   return (
     <div>
-      <label>Sort by: </label>
-      <select onChange={(e) => setSortedBy(e.target.value)}>
-        <option value="finished">Date Finished</option>
-        <option value="started">Date Started</option>
-        <option value="title">Title</option>
-        <option value="author">Author</option>
-        <option value="rating-low">Rating (Low to High)</option>
-        <option value="rating-high">Rating (High to Low)</option>
-      </select>
+      <div className="sortControls">
+        <label htmlFor="sortSelect">Sort by: </label>
+        <select
+          id="sortSelect"
+          value={sortedBy}
+          onChange={(e) => setSortedBy(e.target.value)}
+        >
+          <option value="finished">Date Finished</option>
+          <option value="started">Date Started</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="rating-low">Rating (Low to High)</option>
+          <option value="rating-high">Rating (High to Low)</option>
+        </select>
+      </div>
       <div className="journalGrid">
         {sortedEntries().map((entry) => (
           <JournalCard

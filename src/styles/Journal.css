@@ -4,3 +4,37 @@
   gap: 1.5rem;
   padding: 2rem;
 }
+
+.sortControls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 2rem 0.5rem;
+  font-size: 1rem;
+  font-family: var(--font-main);
+}
+
+.sortControls label {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+.sortControls select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-main);
+  background-color: var(--mint);
+  border: 2px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sortControls select:hover {
+  background-color: var(--coral);
+}
+
+.sortControls select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--yellow);
+}
