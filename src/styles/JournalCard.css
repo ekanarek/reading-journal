@@ -1,0 +1,60 @@
+.journalCard {
+  background-color: white;
+  border: 2px black solid;
+  border-radius: 12px;
+  box-shadow: 2px 2px black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 470px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.journalCard:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.journalCard img {
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.journalDetails {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.journalDetails p {
+  margin: 0.2rem 0;
+  line-height: 1.3;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  cursor: pointer;
+  background-color: var(--coral);
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.clickForMore {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background-color: var(--mint);
+  border-top: 2px solid black;
+}
