@@ -133,30 +133,6 @@
   ],
   "saved": [
     {
-      "id": "OL55900058M",
-      "title": "Crime and Punishment",
-      "author": "Fyodor Dostoevsky",
-      "image": "https://covers.openlibrary.org/b/olid/OL55900058M-M.jpg"
-    },
-    {
-      "id": "OL59380379M",
-      "title": "Hungerstone",
-      "author": "Kat Dunn",
-      "image": "https://covers.openlibrary.org/b/olid/OL59380379M-M.jpg"
-    },
-    {
-      "id": "OL51114957M",
-      "title": "Model Home",
-      "author": "Rivers Solomon",
-      "image": "https://covers.openlibrary.org/b/olid/OL51114957M-M.jpg"
-    },
-    {
-      "id": "OL26857468M",
-      "title": "Beijing Comrades",
-      "author": "Bei Tong",
-      "image": "https://covers.openlibrary.org/b/olid/OL26857468M-M.jpg"
-    },
-    {
       "id": "OL25428218M",
       "title": "And the Mountains Echoed",
       "author": "Khaled Hosseini",
@@ -353,12 +329,6 @@
       "title": "The Lord of the Rings",
       "author": "J.R.R. Tolkien",
       "image": "https://covers.openlibrary.org/b/olid/OL51694024M-M.jpg"
-    },
-    {
-      "id": "OL26855753M",
-      "title": "Circe",
-      "author": "Madeline Miller",
-      "image": "https://covers.openlibrary.org/b/olid/OL26855753M-M.jpg"
     }
   ]
 }
