@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Book } from "../types/Book";
 
-const NavLinks = ({ setSelectedBook }) => {
+interface NavLinksProps {
+  setSelectedBook: Dispatch<SetStateAction<Book | {}>>;
+}
+
+const NavLinks: React.FC<NavLinksProps> = ({ setSelectedBook }) => {
   const navigate = useNavigate();
 
   const handleNewEntryClick = () => {
