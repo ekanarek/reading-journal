@@ -131,12 +131,6 @@
       "image": "https://covers.openlibrary.org/b/olid/OL3953361M-M.jpg"
     },
     {
-      "id": "OL26759325M",
-      "title": "Annihilation",
-      "author": "Jeff VanderMeer",
-      "image": "https://covers.openlibrary.org/b/olid/OL26759325M-M.jpg"
-    },
-    {
       "id": "OL7878939M",
       "title": "The Blade Itself",
       "author": "Joe Abercrombie",
@@ -291,6 +285,12 @@
       "title": "The Bone Ships",
       "author": "RJ Barker",
       "image": "https://covers.openlibrary.org/b/olid/OL28199727M-M.jpg"
+    },
+    {
+      "id": "OL59776467M",
+      "title": "The Possession of Alba Díaz",
+      "author": "Isabel Cañas",
+      "image": "https://covers.openlibrary.org/b/olid/OL59776467M-M.jpg"
     }
   ]
 }

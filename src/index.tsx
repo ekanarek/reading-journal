@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
@@ -35,5 +34,8 @@ const routes = [
 
 const router = createBrowserRouter(routes);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Failed to find root element");
+
+const root = ReactDOM.createRoot(rootElement);
 root.render(<RouterProvider router={router} />);
