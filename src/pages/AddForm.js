@@ -92,7 +92,7 @@ const AddForm = () => {
             min="1"
             max="5"
             value={rating}
-            onChange={(e) => setRating(e.target.value)}
+            onChange={(e) => setRating(Number(e.target.value))}
           />
         </div>
         <div className="formRow column">
