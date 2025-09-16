@@ -5,22 +5,16 @@ import { Book } from "../types/Book";
 import { Entry } from "../types/Entry";
 
 interface AddFormContext {
-  selectedBook: Book;
+  selectedBook: Book | null;
   handleAddEntry: (entry: Entry) => void;
 }
 
 const AddForm: React.FC = () => {
   const { selectedBook, handleAddEntry } = useOutletContext<AddFormContext>();
 
-  const [title, setTitle] = useState<string>(
-    selectedBook.title ? selectedBook.title : ""
-  );
-  const [author, setAuthor] = useState<string>(
-    selectedBook.author ? selectedBook.author : ""
-  );
-  const [image, setImage] = useState<string>(
-    selectedBook.image ? selectedBook.image : ""
-  );
+  const [title, setTitle] = useState<string>(selectedBook?.title ?? "");
+  const [author, setAuthor] = useState<string>(selectedBook?.author ?? "");
+  const [image, setImage] = useState<string>(selectedBook?.image ?? "");
   const [startDate, setStartDate] = useState<string>("");
   const [finishedDate, setFinishedDate] = useState<string>("");
   const [rating, setRating] = useState<number | "">("");
@@ -46,7 +40,7 @@ const AddForm: React.FC = () => {
         <h3>Add A New Journal Entry</h3>
         <div className="formRow">
           <label>Title: </label>
-          {selectedBook.title ? (
+          {selectedBook?.title ? (
             <input type="text" value={title} readOnly disabled />
           ) : (
             <input
@@ -58,7 +52,7 @@ const AddForm: React.FC = () => {
         </div>
         <div className="formRow">
           <label>Author: </label>
-          {selectedBook.author ? (
+          {selectedBook?.author ? (
             <input type="text" value={author} readOnly disabled />
           ) : (
             <input

@@ -7,7 +7,7 @@ import { Book } from "../types/Book";
 
 interface NavBarProps {
   handleSearch: (search: string) => void;
-  setSelectedBook: Dispatch<SetStateAction<Book | {}>>;
+  setSelectedBook: React.Dispatch<React.SetStateAction<Book | null>>;
 }
 
 const NavBar: React.FC<NavBarProps> = ({ handleSearch, setSelectedBook }) => {
