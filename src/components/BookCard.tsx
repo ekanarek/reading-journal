@@ -1,12 +1,6 @@
 import React from "react";
 import "../styles/BookCard.css";
-
-interface Book {
-  id: string | number;
-  title: string;
-  author: string;
-  image: string;
-}
+import { Book } from "../types/Book";
 
 interface BookCardProps {
   book: Book;
