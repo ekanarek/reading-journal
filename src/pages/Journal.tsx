@@ -7,11 +7,12 @@ import {
   sortByRating,
 } from "../utils/sort";
 import "../styles/Journal.css";
+import { Entry } from "../types/Entry";
 
 const journalAPI = "http://localhost:3001/journal/";
 
-const Journal = () => {
-  const [entries, setEntries] = useState([]);
+const Journal: React.FC = () => {
+  const [entries, setEntries] = useState<Entry[]>([]);
   const [sortedBy, setSortedBy] = useState("finished");
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const Journal = () => {
     }
   };
 
-  const handleDelete = (entry) => {
+  const handleDelete = (entry: Entry) => {
     if (
       window.confirm(
         "Are you sure you would like to delete? This cannot be undone."
@@ -53,7 +54,7 @@ const Journal = () => {
         },
       })
         .then((r) => r.json())
-        .then(setEntries(entries.filter((e) => e.id !== entry.id)));
+        .then(() => setEntries(entries.filter((e) => e.id !== entry.id)));
     }
   };
 

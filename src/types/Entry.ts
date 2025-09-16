@@ -1,4 +1,5 @@
 export interface Entry {
+  id?: number;
   title: string;
   author: string;
   image: string;
