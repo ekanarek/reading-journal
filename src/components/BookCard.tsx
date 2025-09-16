@@ -1,7 +1,26 @@
 import React from "react";
 import "../styles/BookCard.css";
 
-const BookCard = ({ book, handleAddToForm, savedBooks, handleSaveBook }) => {
+interface Book {
+  id: string | number;
+  title: string;
+  author: string;
+  image: string;
+}
+
+interface BookCardProps {
+  book: Book;
+  handleAddToForm: (book: Book) => void;
+  savedBooks: Book[];
+  handleSaveBook: (book: Book) => void;
+}
+
+const BookCard: React.FC<BookCardProps> = ({
+  book,
+  handleAddToForm,
+  savedBooks,
+  handleSaveBook,
+}) => {
   const { title, author, image } = book;
   const isSaved = savedBooks.some((savedBook) => savedBook.id === book.id);
 
