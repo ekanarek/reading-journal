@@ -101,16 +101,6 @@
       "notes": "Lorem ipsum dolor sit amet, ne dico dolores prodesset quo, eam liber abhorreant ei. Ei est alia repudiandae, vix alterum contentiones at. Et saperet utroque debitis eam, vix no mutat molestiae voluptatibus, vix dolores antiopam ne. Pro at elitr constituto. Pro lucilius detraxit molestiae an, timeam vocibus verterem est te. Modus prompta inimicus ius ne. Cu ius errem fabellas recusabo, mucius oportere ius et. His ad sale consequuntur. Te case imperdiet eum. Cu qui esse copiosae consequuntur, laboramus cotidieque nam cu. Mei in verear disputationi, possim everti has ei."
     },
     {
-      "id": "a829",
-      "title": "Carmilla",
-      "author": "J. Sheridan LeFanu",
-      "image": "https://covers.openlibrary.org/b/olid/OL27454892M-M.jpg",
-      "started": "2025-06-15",
-      "finished": "2025-06-17",
-      "rating": "4",
-      "notes": "Lorem ipsum dolor sit amet, ne dico dolores prodesset quo, eam liber abhorreant ei. Ei est alia repudiandae, vix alterum contentiones at. Et saperet utroque debitis eam, vix no mutat molestiae voluptatibus, vix dolores antiopam ne. Pro at elitr constituto. Pro lucilius detraxit molestiae an, timeam vocibus verterem est te. Modus prompta inimicus ius ne. Cu ius errem fabellas recusabo, mucius oportere ius et. His ad sale consequuntur. Te case imperdiet eum. Cu qui esse copiosae consequuntur, laboramus cotidieque nam cu. Mei in verear disputationi, possim everti has ei."
-    },
-    {
       "id": "f0c0",
       "title": "Sunrise on the Reaping",
       "author": "Suzanne Collins",
@@ -139,12 +129,6 @@
       "title": "Fingersmith",
       "author": "Sarah Waters",
       "image": "https://covers.openlibrary.org/b/olid/OL3953361M-M.jpg"
-    },
-    {
-      "id": "OL26759325M",
-      "title": "Annihilation",
-      "author": "Jeff VanderMeer",
-      "image": "https://covers.openlibrary.org/b/olid/OL26759325M-M.jpg"
     },
     {
       "id": "OL7878939M",
@@ -301,6 +285,12 @@
       "title": "The Bone Ships",
       "author": "RJ Barker",
       "image": "https://covers.openlibrary.org/b/olid/OL28199727M-M.jpg"
+    },
+    {
+      "id": "OL59776467M",
+      "title": "The Possession of Alba Díaz",
+      "author": "Isabel Cañas",
+      "image": "https://covers.openlibrary.org/b/olid/OL59776467M-M.jpg"
     }
   ]
 }

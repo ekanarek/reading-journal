@@ -2,9 +2,17 @@ import React from "react";
 import { useOutletContext } from "react-router-dom";
 import BookCard from "../components/BookCard";
 import "../styles/SavedBooks.css";
+import { Book } from "../types/Book";
 
-const SavedBooks = () => {
-  const { savedBooks, handleAddToForm, handleSaveBook } = useOutletContext();
+interface SavedBooksContext {
+  savedBooks: Book[];
+  handleAddToForm: (book: Book) => void;
+  handleSaveBook: (book: Book) => void;
+}
+
+const SavedBooks: React.FC = () => {
+  const { savedBooks, handleAddToForm, handleSaveBook } =
+    useOutletContext<SavedBooksContext>();
 
   return (
     <div className="savedBooksGrid">

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import "./App.css";
+import { Book } from "types/Book";
+import { Entry } from "types/Entry";
 
 const savedAPI = "http://localhost:3001/saved/";
 const journalAPI = "http://localhost:3001/journal/";
@@ -9,9 +11,9 @@ const journalAPI = "http://localhost:3001/journal/";
 const App = () => {
   const navigate = useNavigate();
 
-  const [searchResults, setSearchResults] = useState([]);
-  const [selectedBook, setSelectedBook] = useState({});
-  const [savedBooks, setSavedBooks] = useState([]);
+  const [searchResults, setSearchResults] = useState<Book[]>([]);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [savedBooks, setSavedBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     fetch(savedAPI)
@@ -19,33 +21,43 @@ const App = () => {
       .then((data) => setSavedBooks(data));
   }, []);
 
-  const handleSearch = (search) => {
+  const handleSearch = (search: string) => {
+    interface OpenLibraryDoc {
+      cover_edition_key?: string;
+      title?: string;
+      author_name?: string[];
+    }
+
     fetch(`https://openlibrary.org/search.json?q=${search}&limit=20`)
       .then((r) => r.json())
       .then((data) => {
-        const books = data.docs.map((book) => {
-          const OLID = book.cover_edition_key;
-          if (OLID && book.title && book.author_name) {
-            const bookCover = `https://covers.openlibrary.org/b/olid/${OLID}-M.jpg`;
-            const bookObj = {
-              id: OLID,
-              title: book.title,
-              author: book.author_name[0],
-              image: bookCover,
-            };
-            return bookObj;
+        const books = (data.docs as OpenLibraryDoc[]).flatMap(
+          (book): Book[] => {
+            const OLID = book.cover_edition_key;
+            if (OLID && book.title && book.author_name) {
+              const bookCover = `https://covers.openlibrary.org/b/olid/${OLID}-M.jpg`;
+              return [
+                {
+                  id: OLID,
+                  title: book.title,
+                  author: book.author_name[0],
+                  image: bookCover,
+                },
+              ];
+            }
+            return [];
           }
-        });
-        setSearchResults(books.filter((book) => book));
+        );
+        setSearchResults(books);
       });
   };
 
-  const handleAddToForm = (book) => {
+  const handleAddToForm = (book: Book) => {
     setSelectedBook(book);
     navigate("/new");
   };
 
-  const handleAddEntry = (newEntry) => {
+  const handleAddEntry = (newEntry: Entry) => {
     fetch(journalAPI, {
       method: "POST",
       headers: {
@@ -56,6 +68,11 @@ const App = () => {
     })
       .then((r) => r.json())
       .then(() => {
+        if (!selectedBook) {
+          navigate("/");
+          return;
+        }
+
         const savedMatch = savedBooks.find(
           (book) => book.id === selectedBook.id
         );
@@ -64,11 +81,11 @@ const App = () => {
           handleSaveBook(savedMatch);
         }
         navigate("/");
-        setSelectedBook({});
+        setSelectedBook(null);
       });
   };
 
-  const handleSaveBook = (book) => {
+  const handleSaveBook = (book: Book) => {
     const alreadySaved = savedBooks.some((item) => item.id === book.id);
 
     alreadySaved
@@ -80,7 +97,9 @@ const App = () => {
           },
         })
           .then((r) => r.json())
-          .then(setSavedBooks(savedBooks.filter((item) => item.id !== book.id)))
+          .then(() =>
+            setSavedBooks(savedBooks.filter((item) => item.id !== book.id))
+          )
       : fetch(savedAPI, {
           method: "POST",
           headers: {

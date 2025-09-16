@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useOutletContext } from "react-router-dom";
 import BookCard from "../components/BookCard";
 import "../styles/SearchResults.css";
+import { Book } from "../types/Book";
 
-const SearchResults = () => {
+interface SearchResultsContext {
+  searchResults: Book[];
+  handleAddToForm: (book: Book) => void;
+  handleSaveBook: (book: Book) => void;
+  savedBooks: Book[];
+}
+
+const SearchResults: React.FC = () => {
   const { searchResults, handleAddToForm, handleSaveBook, savedBooks } =
-    useOutletContext();
+    useOutletContext<SearchResultsContext>();
 
   return (
     <div>

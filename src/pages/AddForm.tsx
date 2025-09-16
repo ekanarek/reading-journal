@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "../styles/AddForm.css";
+import { Book } from "../types/Book";
+import { Entry } from "../types/Entry";
 
-const AddForm = () => {
-  const { selectedBook, handleAddEntry } = useOutletContext();
+interface AddFormContext {
+  selectedBook: Book | null;
+  handleAddEntry: (entry: Entry) => void;
+}
 
-  const [title, setTitle] = useState(
-    selectedBook.title ? selectedBook.title : ""
-  );
-  const [author, setAuthor] = useState(
-    selectedBook.author ? selectedBook.author : ""
-  );
-  const [image, setImage] = useState(
-    selectedBook.image ? selectedBook.image : ""
-  );
-  const [startDate, setStartDate] = useState("");
-  const [finishedDate, setFinishedDate] = useState("");
-  const [rating, setRating] = useState("");
-  const [notes, setNotes] = useState("");
+const AddForm: React.FC = () => {
+  const { selectedBook, handleAddEntry } = useOutletContext<AddFormContext>();
 
-  const handleSubmit = (e) => {
+  const [title, setTitle] = useState<string>(selectedBook?.title ?? "");
+  const [author, setAuthor] = useState<string>(selectedBook?.author ?? "");
+  const [image, setImage] = useState<string>(selectedBook?.image ?? "");
+  const [startDate, setStartDate] = useState<string>("");
+  const [finishedDate, setFinishedDate] = useState<string>("");
+  const [rating, setRating] = useState<number | "">("");
+  const [notes, setNotes] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newEntry = {
       title: title,
@@ -27,7 +28,7 @@ const AddForm = () => {
       image: image,
       started: startDate,
       finished: finishedDate,
-      rating: rating,
+      rating: Number(rating),
       notes: notes,
     };
     handleAddEntry(newEntry);
@@ -39,8 +40,8 @@ const AddForm = () => {
         <h3>Add A New Journal Entry</h3>
         <div className="formRow">
           <label>Title: </label>
-          {selectedBook.title ? (
-            <input type="text" value={title} readOnly="readOnly" disabled />
+          {selectedBook?.title ? (
+            <input type="text" value={title} readOnly disabled />
           ) : (
             <input
               type="text"
@@ -51,8 +52,8 @@ const AddForm = () => {
         </div>
         <div className="formRow">
           <label>Author: </label>
-          {selectedBook.author ? (
-            <input type="text" value={author} readOnly="readOnly" disabled />
+          {selectedBook?.author ? (
+            <input type="text" value={author} readOnly disabled />
           ) : (
             <input
               type="text"
@@ -92,14 +93,14 @@ const AddForm = () => {
             min="1"
             max="5"
             value={rating}
-            onChange={(e) => setRating(e.target.value)}
+            onChange={(e) => setRating(Number(e.target.value))}
           />
         </div>
         <div className="formRow column">
           <textarea
             placeholder="Add your reading notes here..."
-            rows="10"
-            cols="50"
+            rows={10}
+            cols={50}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
