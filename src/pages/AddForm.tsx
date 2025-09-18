@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useOutletContext } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "../styles/AddForm.css";
 import { Book } from "../types/Book";
 import { Entry } from "../types/Entry";
@@ -9,82 +10,71 @@ interface AddFormContext {
   handleAddEntry: (entry: Entry) => void;
 }
 
+type FormValues = {
+  title: string;
+  author: string;
+  image: string;
+  started: string;
+  finished: string;
+  rating: number;
+  notes: string;
+};
+
 const AddForm: React.FC = () => {
   const { selectedBook, handleAddEntry } = useOutletContext<AddFormContext>();
 
-  const [title, setTitle] = useState<string>(selectedBook?.title ?? "");
-  const [author, setAuthor] = useState<string>(selectedBook?.author ?? "");
-  const [image, setImage] = useState<string>(selectedBook?.image ?? "");
-  const [startDate, setStartDate] = useState<string>("");
-  const [finishedDate, setFinishedDate] = useState<string>("");
-  const [rating, setRating] = useState<number | "">("");
-  const [notes, setNotes] = useState<string>("");
+  const { register, handleSubmit, reset } = useForm<FormValues>({
+    defaultValues: {
+      title: selectedBook?.title ?? "",
+      author: selectedBook?.author ?? "",
+      image: selectedBook?.image ?? "",
+      started: "",
+      finished: "",
+      rating: 0,
+      notes: "",
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newEntry = {
-      title: title,
-      author: author,
-      image: image,
-      started: startDate,
-      finished: finishedDate,
-      rating: Number(rating),
-      notes: notes,
+  const onSubmit = (data: FormValues) => {
+    const newEntry: Entry = {
+      ...data,
+      rating: Number(data.rating),
     };
     handleAddEntry(newEntry);
+    reset();
   };
 
   return (
     <div className="addFormContainer">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h3>Add A New Journal Entry</h3>
         <div className="formRow">
           <label>Title: </label>
           {selectedBook?.title ? (
-            <input type="text" value={title} readOnly disabled />
+            <input type="text" {...register("title")} readOnly disabled />
           ) : (
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+            <input type="text" {...register("title")} />
           )}
         </div>
         <div className="formRow">
           <label>Author: </label>
           {selectedBook?.author ? (
-            <input type="text" value={author} readOnly disabled />
+            <input type="text" {...register("author")} readOnly disabled />
           ) : (
-            <input
-              type="text"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
+            <input type="text" {...register("author")} />
           )}
         </div>
         <div className="formRow">
           <label>Cover Image URL: </label>
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
+          <input type="text" {...register("image")} />
         </div>
         <div className="formRow">
           <label>Date Started: </label>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
+          <input type="date" {...register("started")} />
         </div>
         <div className="formRow">
           <label>Date Finished: </label>
-          <input
-            type="date"
-            value={finishedDate}
-            onChange={(e) => setFinishedDate(e.target.value)}
-          />
+          <input type="date" {...register("finished")} />
         </div>
         <div className="formRow">
           <label>Rating (1-5): </label>
@@ -92,8 +82,7 @@ const AddForm: React.FC = () => {
             type="number"
             min="1"
             max="5"
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
+            {...register("rating", { valueAsNumber: true })}
           />
         </div>
         <div className="formRow column">
@@ -101,8 +90,7 @@ const AddForm: React.FC = () => {
             placeholder="Add your reading notes here..."
             rows={10}
             cols={50}
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
+            {...register("notes")}
           />
         </div>
         <button type="submit">Save</button>
