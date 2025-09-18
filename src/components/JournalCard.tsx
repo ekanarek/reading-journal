@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "../styles/JournalCard.css";
+import { Entry } from "../types/Entry";
 
-const JournalCard = ({ entry, handleDelete }) => {
+interface JournalCardProps {
+  entry: Entry;
+  handleDelete: (entry: Entry) => void;
+}
+
+const JournalCard: React.FC<JournalCardProps> = ({ entry, handleDelete }) => {
   const { title, author, image, started, finished, rating, notes } = entry;
   const [isClicked, setIsClicked] = useState(false);
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/NavBrand.css";
 
-const NavBrand = () => {
+const NavBrand: React.FC = () => {
   return (
     <div className="nav-brand">
       <img src="/icon.png" alt="Reading Journal Icon" className="nav-icon" />
